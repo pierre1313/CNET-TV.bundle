@@ -22,11 +22,11 @@
 	<string>MacOSX,iOS</string>
 	<key>PlexMediaContainer</key>
 	<string>MP4</string>
-	<key>PlexPluginDebug</key>
-	<string>1</string>
 	<key>PlexPluginMode</key>
 	<string>AlwaysOn</string>
 	<key>PlexVideoCodec</key>
 	<string>H.264</string>
+	<key>PlexFrameworkVersion</key>
+	<string>2</string>
 </dict>
 </plist>
