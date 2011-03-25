@@ -34,5 +34,7 @@
 	<array>
 		<string>H.264</string>
 	</array>
+	<key>PlexPluginConsoleLogging</key>
+	<string>0</string>
 </dict>
 </plist>
