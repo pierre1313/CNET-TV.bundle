@@ -20,11 +20,12 @@ def MainMenu():
   dir = MediaContainer() 
   videoId = TodaysVideoId()
   dir.Append(Function(DirectoryItem(Videos, title='Today on CNET'), key='videoIds', params=videoId))
-
-  for item in HTML.ElementFromURL(ROOT_URL).xpath('//ul[@id="mainMenu"]/li'):
-    title = item.find('a').text_content()
+  
+  for item in HTML.ElementFromURL(ROOT_URL).xpath('//li[@class="expandable"]'):
+    title = item.xpath('./a/text()')[0].strip()
+    Log(title)
     subMenus = []
-    for subItem in item.xpath('./ul/li/a'):
+    for subItem in item.xpath('.//nav/ul/li/a'):
       try:
         onClickItems = [p.strip("'") for p in re.findall("'[^']+'", subItem.get('onclick'))]
         onClickItems[0] = onClickItems[0].replace(u'\x92',"'")
