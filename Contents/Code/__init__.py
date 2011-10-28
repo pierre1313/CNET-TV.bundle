@@ -23,7 +23,7 @@ def MainMenu():
   
   for item in HTML.ElementFromURL(ROOT_URL).xpath('//li[@class="expandable"]'):
     title = item.xpath('./a/text()')[0].strip()
-    Log(title)
+    #Log(title)
     subMenus = []
     for subItem in item.xpath('.//nav/ul/li/a'):
       try:
@@ -43,10 +43,13 @@ def Menu(sender, subMenus):
   dir = MediaContainer()
 
   for subMenu in subMenus:
-    title = unicode(subMenu[0])
-    key = PARAM_NAME_MAP[subMenu[1]]
-    params = subMenu[2]
-    dir.Append(Function(DirectoryItem(Videos, title), key=key, params=params))
+    try:
+      title = unicode(subMenu[0])
+      key = PARAM_NAME_MAP[subMenu[1]]
+      params = subMenu[2]
+      dir.Append(Function(DirectoryItem(Videos, title), key=key, params=params))
+    except:
+      pass
 
   return dir
 
