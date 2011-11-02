@@ -67,7 +67,8 @@ def Videos(sender, key, params):
       thumb = pickThumb(video.xpath('./l:Images/l:Image', namespaces=CNET_NAMESPACE))
       duration = int(video.xpath('./l:LengthSecs', namespaces=CNET_NAMESPACE)[0].text)*1000
       subtitle = Datetime.ParseDate(video.xpath('./l:CreateDate', namespaces=CNET_NAMESPACE)[0].text).strftime('%a %b %d, %Y')
-      dir.Append(VideoItem(media, title, subtitle=subtitle, summary=summary, duration=duration, thumb=thumb))
+      if 'mp4 in media:
+        dir.Append(VideoItem(media, title, subtitle=subtitle, summary=summary, duration=duration, thumb=thumb))
 
   return dir
 
